@@ -4,6 +4,7 @@ import 'core/di/injection_container.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'features/dashboard/presentation/cubit/dashboard_cubit.dart';
+import 'features/auth/presentation/cubit/auth_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<AuthCubit>(
+          create: (context) => sl<AuthCubit>(),
+        ),
         BlocProvider<DashboardCubit>(
           create: (context) => sl<DashboardCubit>(),
         ),
@@ -32,3 +36,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

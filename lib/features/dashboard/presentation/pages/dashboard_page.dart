@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/dashboard_cubit.dart';
 import '../cubit/dashboard_state.dart';
 import '../../domain/entities/dashboard_item.dart';
+import '../../../auth/presentation/cubit/auth_cubit.dart';
+
 
 class DashboardPage extends StatefulWidget {
   final VoidCallback? onToggleTheme;
@@ -33,7 +35,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Workspace Analítico'),
+        title: const Text('Praki'),
         actions: [
           IconButton(
             icon: Icon(
@@ -42,6 +44,13 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             onPressed: widget.onToggleTheme,
             tooltip: 'Cambiar Tema',
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout_rounded),
+            onPressed: () {
+              context.read<AuthCubit>().logout();
+            },
+            tooltip: 'Cerrar Sesión',
           ),
           const SizedBox(width: 8),
         ],
@@ -85,7 +94,7 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
           const SizedBox(height: 8),
           Text(
-            'Aquí tienes el resumen del rendimiento de tu infraestructura hoy.',
+            'Aquí tienes el resumen de tu bienestar y salud mental hoy.',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 32),
@@ -301,16 +310,16 @@ class _DashboardPageState extends State<DashboardPage> {
 
   IconData _getIconData(String name) {
     switch (name) {
-      case 'people':
-        return Icons.people_alt_rounded;
-      case 'monetization_on':
-        return Icons.monetization_on_rounded;
-      case 'trending_up':
-        return Icons.trending_up_rounded;
-      case 'dns':
-        return Icons.dns_rounded;
+      case 'mood':
+        return Icons.sentiment_satisfied_alt_rounded;
+      case 'sleep':
+        return Icons.bedtime_rounded;
+      case 'anxiety':
+        return Icons.psychology_rounded;
+      case 'meditation':
+        return Icons.spa_rounded;
       default:
-        return Icons.dashboard_rounded;
+        return Icons.self_improvement_rounded;
     }
   }
 }

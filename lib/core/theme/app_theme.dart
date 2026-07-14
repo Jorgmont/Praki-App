@@ -3,19 +3,23 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Global theme controller to toggle modes reactively
-  static final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.dark);
+  static final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
 
   // Brand color tokens using HSL equivalent Color objects
-  static const Color primaryDark = Color(0xFF6366F1); // Indigo neon
-  static const Color primaryLight = Color(0xFF4F46E5); // Rich deep indigo
-  static const Color secondaryDark = Color(0xFF10B981); // Emerald green accent
-  static const Color secondaryLight = Color(0xFF059669);
+  static const Color sageGreen = Color(0xFFDCEBE7); // Soft sage green (#DCEBE7)
+  static const Color offWhite = Color(0xFFF6F0F0);  // Off-white/warm gray (#F6F0F0)
+  static const Color warmBeige = Color(0xFFEEE3DF); // Warm light beige (#EEE3DF)
+
+  static const Color primaryLight = Color(0xFF2E4D46);  // Soothing deep pine green for high contrast text/buttons
+  static const Color secondaryLight = Color(0xFF4C7B71); // Soft sage-green accent
+  static const Color primaryDark = Color(0xFFDCEBE7);   // Light sage green for high contrast in dark mode
+  static const Color secondaryDark = Color(0xFF91B5AD);  // Soothing sage green accent
 
   // Backgrounds
-  static const Color bgDark = Color(0xFF0F172A); // Slate 900
-  static const Color surfaceDark = Color(0xFF1E293B); // Slate 800
-  static const Color bgLight = Color(0xFFF8FAFC); // Slate 50
-  static const Color surfaceLight = Color(0xFFFFFFFF);
+  static const Color bgDark = Color(0xFF0F1614);      // Soothing very dark teal-gray
+  static const Color surfaceDark = Color(0xFF1A2623); // Soothing dark container color
+  static const Color bgLight = warmBeige;             // Warm light beige background
+  static const Color surfaceLight = offWhite;         // Off-white card surface
 
   // Custom Dark Theme
   static ThemeData get darkTheme {
@@ -28,7 +32,7 @@ class AppTheme {
         primary: primaryDark,
         secondary: secondaryDark,
         surface: surfaceDark,
-        onPrimary: Colors.white,
+        onPrimary: bgDark,
         onSecondary: Colors.white,
         onSurface: Color(0xFFF1F5F9), // Slate 100
       ),
@@ -43,7 +47,7 @@ class AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
-          side: const BorderSide(color: Color(0xFF334155), width: 1), // Slate 700 subtle border
+          side: const BorderSide(color: Color(0xFF2A3D39), width: 1.5), // Subtle dark sage border
         ),
       ),
       appBarTheme: const AppBarTheme(
@@ -56,7 +60,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryDark,
-          foregroundColor: Colors.white,
+          foregroundColor: bgDark,
           elevation: 0,
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -90,10 +94,10 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: surfaceLight,
         elevation: 4,
-        shadowColor: const Color(0x0F000000),
+        shadowColor: const Color(0x08000000),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
-          side: const BorderSide(color: Color(0xFFE2E8F0), width: 1), // Slate 200 subtle border
+          side: const BorderSide(color: sageGreen, width: 1.5), // Soothing light sage border
         ),
       ),
       appBarTheme: const AppBarTheme(

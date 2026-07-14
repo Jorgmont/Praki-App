@@ -2,10 +2,14 @@ import 'package:get_it/get_it.dart';
 import '../../features/dashboard/data/repositories/dashboard_repository_impl.dart';
 import '../../features/dashboard/domain/repositories/dashboard_repository.dart';
 import '../../features/dashboard/presentation/cubit/dashboard_cubit.dart';
+import '../../features/auth/presentation/cubit/auth_cubit.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  // Features - Auth
+  sl.registerLazySingleton(() => AuthCubit());
+
   // Features - Dashboard
 
   // Cubits (Factory registration so a new instance is created when requested)
@@ -16,3 +20,4 @@ Future<void> init() async {
     () => DashboardRepositoryImpl(),
   );
 }
+
