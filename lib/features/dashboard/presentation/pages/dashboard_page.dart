@@ -5,7 +5,6 @@ import '../cubit/dashboard_state.dart';
 import '../../domain/entities/dashboard_item.dart';
 import '../../../auth/presentation/cubit/auth_cubit.dart';
 
-
 class DashboardPage extends StatefulWidget {
   final VoidCallback? onToggleTheme;
   final bool isDarkMode;

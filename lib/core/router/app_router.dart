@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:praki/menu.dart';
 import '../di/injection_container.dart';
 import '../theme/app_theme.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
@@ -10,7 +11,7 @@ import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/menu',
     refreshListenable: GoRouterRefreshStream(sl<AuthCubit>().stream),
     redirect: (context, state) {
       final authState = sl<AuthCubit>().state;
@@ -21,8 +22,8 @@ class AppRouter {
       }
 
       if (isLoggingIn) {
-        return '/';
-      }
+      return '/menu'; 
+    }
 
       return null;
     },
@@ -31,6 +32,11 @@ class AppRouter {
         path: '/login',
         name: 'login',
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: '/menu',
+        name: 'menu',
+        builder: (context, state) => const MenuPrincipal(),
       ),
       GoRoute(
         path: '/',
