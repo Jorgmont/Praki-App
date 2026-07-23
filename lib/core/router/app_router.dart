@@ -36,7 +36,7 @@ class AppRouter {
       GoRoute(
         path: '/menu',
         name: 'menu',
-        builder: (context, state) => const MenuPrincipal(),
+        builder: (context, state) => const MenuScreen(),
       ),
       GoRoute(
         path: '/',

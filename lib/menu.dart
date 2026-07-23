@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Este es el widget que llamarás después del login
-class MenuPrincipal extends StatefulWidget {
-  const MenuPrincipal({super.key});
-
-  @override
-  State<MenuPrincipal> createState() => _MenuPrincipalState();
-}
-
-class  _MenuPrincipalState extends State<MenuPrincipal> {
-  @override
-  Widget build(BuildContext context) {
-    return const MenuScreen();
-  }
-}
-
-
-
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
@@ -27,29 +10,32 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
-    const Center(
+  // Color verde azulado oscuro / petróleo para los iconos
+  static const Color prakiIconColor = Color(0xFF234443);
+
+  final List<Widget> _pages = const [
+    Center(
       child: Text(
         "🏠 Inicio",
-        style: TextStyle(fontSize: 24, color: Colors.white),
+        style: TextStyle(fontSize: 24, color: prakiIconColor), // Texto también con el color azulado
       ),
     ),
-    const Center(
+    Center(
       child: Text(
         "💙 Cuidado",
-        style: TextStyle(fontSize: 24, color: Colors.white),
+        style: TextStyle(fontSize: 24, color: prakiIconColor),
       ),
     ),
-    const Center(
+    Center(
       child: Text(
         "🔥 Racha",
-        style: TextStyle(fontSize: 24, color: Colors.white),
+        style: TextStyle(fontSize: 24, color: prakiIconColor),
       ),
     ),
-    const Center(
+    Center(
       child: Text(
         "🤖 Praki IA",
-        style: TextStyle(fontSize: 24, color: Colors.white),
+        style: TextStyle(fontSize: 24, color: prakiIconColor),
       ),
     ),
   ];
@@ -63,7 +49,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0B1020),
+      backgroundColor: const Color(0xFFF6F0F0), // Fondo de pantalla (color de paleta)
 
       body: SafeArea(
         child: _pages[_selectedIndex],
@@ -71,7 +57,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
-          color: Color(0xFF141B34),
+          color: Color(0xFFEEE3DF), // Fondo de la barra (color de paleta)
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
@@ -80,11 +66,12 @@ class _MenuScreenState extends State<MenuScreen> {
         child: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          backgroundColor: const Color(0xFF141B34),
+          backgroundColor: Colors.transparent, 
           type: BottomNavigationBarType.fixed,
           elevation: 0,
-          selectedItemColor: Colors.deepPurpleAccent,
-          unselectedItemColor: Colors.white70,
+          // Aplicamos el color azulado solo a los iconos y etiquetas
+          selectedItemColor: prakiIconColor, 
+          unselectedItemColor: prakiIconColor,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_rounded),
